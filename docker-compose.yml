@@ -2,15 +2,6 @@ version: '3'
 
 services:
 
-  app:
-    build: .
-    # WAIT_HOSTS: mysqldb:3306
-#    restart: always
-    # links: 
-    #   - mysqldb:mysqldb
-    ports:
-      - "80:8080"
-
   mysqldb:
     image: mysql
     ports:
@@ -23,6 +14,14 @@ services:
       - mysql:/var/lib/mysql
       - mysql_config:/etc/mysql
 
+  app:
+    build: .
+    # WAIT_HOSTS: mysqldb:3306
+#    restart: always
+    # links: 
+    #   - mysqldb:mysqldb
+    ports:
+      - "80:8080"
 volumes:
   mysql:
   mysql_config:
