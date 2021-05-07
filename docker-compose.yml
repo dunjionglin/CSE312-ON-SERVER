@@ -4,8 +4,7 @@ services:
 
   app:
     build: .
-    environment:
-      WAIT_HOSTS: mysqldb:3306
+#    restart: always
     # links: 
     #   - mysqldb:mysqldb
     ports:
