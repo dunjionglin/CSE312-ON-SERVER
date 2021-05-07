@@ -1,0 +1,149 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+	<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link
+	rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+	<link rel="stylesheet" href="css/profile.css" >
+
+
+    <title>User Profile</title>
+  </head>
+  <body onload="main()">
+
+	<div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+
+
+	<div class="container">
+		<div class="row profile">
+			<div class="col-md-3">
+				<div class="sidebar">
+					<form action="/changeProfile" method="post" enctype="multipart/form-data">
+
+					<div class="useravatar">
+						<img id ="useravatar" src="img/background.jpg" img-responsive alt="" style="cursor: pointer;">
+						<input type="file" id="profile_avatar" name="profile_avatar" style="display: none;">
+					</div>
+
+					<div class="usertitle">
+
+						<div class="name" id="user_fullname">
+							Dunjiong Dog
+						</div>
+						
+						
+						<div class="Password_button">
+							<button type="button" class="btn btn-info" onclick="document.getElementById('id01').style.display='block'">Change Password</button>
+						</div>
+						<br>
+
+					</div>
+
+				</div>
+			</div>
+			<div class="col-md-9">
+				<div class="content">
+					<br><br><br>					<br><br><br>
+						<div class="col-md-6">
+							<div class="form__group field">
+								<input type="input" class="form__field" placeholder="Name" name="first" id='first' required readonly/>
+								<label for="name" class="form__label">First Name</label>
+							  </div>
+						</div>
+						<div class="col-md-6">
+
+							  <div class="form__group field">
+								<input type="input" class="form__field" placeholder="Name" name="last" id='last' required />
+								<label for="name" class="form__label">Last Name</label>
+							  </div>
+
+						</div>
+						<button type="submit" class="btn btn-primary btn-lg" id="Save" style="right:20px;bottom: 3px; position: absolute; " disabled>Save</button>
+					</form>
+					</div>
+
+			</div>
+		</div>
+	</div>
+	<div id="id01" class="modal animate__animated animate__fadeIn">
+        <form class="modal-content animate">
+            <i class="fa fa-times-circle fa-2x topright" aria-hidden="true" onclick="document.getElementById('id01').style.display='none'" style="cursor: pointer;"></i>
+            <p style="text-align: center; margin-top: 3%;">Changing Password</p><hr>
+			<div class="form__group field" style="width: 50%; margin: 0 auto;">
+				<input type="password" class="form__field" placeholder="Name" name="old_password" id='old_password' required  style="color: white;"/>
+				<label for="name" class="form__label">Old Password</label>
+			  </div><br><br>
+			  <div class="form__group field" style="width: 50%; margin: 0 auto;">
+				<input type="password" class="form__field" placeholder="Name" name="new_password1" id='new_password1' required style="color: white;"/>
+				<label for="name" class="form__label">New Password</label>
+			  </div><br><br>
+			  <div class="form__group field" style="width: 50%; margin: 0 auto;">
+				<input type="password" class="form__field" placeholder="Name" name="new_password2" id='new_password2' required style="color: white;" />
+				<label for="name" class="form__label">Confirm Password</label>
+			  </div>
+			  <button type="button" class="btn btn-primary btn-lg" id="password_change" style="right:20px;bottom: 10px; position: absolute; ">Change Password!</button>
+
+            </form>
+    </div>
+	<div id="id02" class="modalEmote animate__animated animate__zoomIn"> 
+		<div id="containerEmote" class="animate">
+			<div id="success-box">
+			  <div class="face">
+				<div class="eye"></div>
+				<div class="eye right"></div>
+				<div class="mouth happy"></div>
+			  </div>
+			  <div class="shadow scale"></div>
+			  <div class="message"><h1 id='h1emote' class="alert">Success!</h1><p id='pemote-success'>Welcome to ChatO.</p></div>
+				<button type='submit' class="success-button-box"><h1 id='h1emote' class="green" >continue</h1></button>
+			</div>
+			<div id="error-box">
+			  <div class="face2">
+				<div class="eye"></div>
+				<div class="eye right"></div>
+				<div class="mouth sad"></div>
+			  </div>
+			  <div class="shadow move"></div>
+			  <div class="message"><h1 id='h1emote' class="alert">Error!</h1><p id='pemote-fail'>email or phone are already registered.</div>
+			  <button class="fail-button-box" onclick="document.getElementById('id02').style.display='none'"><h1 id='h1emote' class="red">Try Again</h1></button>
+			</div>
+		  </div>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+
+	<script src="js/profile.js"></script>
+  </body>
+</html>

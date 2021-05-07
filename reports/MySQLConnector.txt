@@ -1,0 +1,28 @@
+This technology is a driver that helps our python server to communicate with MySQL database to send and retrieve data from database for persistent storage.  
+
+This technology accomplishes it by establishing a connection between MySQL database through mysql.connector.connect then .cursor to create a cursor, cursor.execute to store data, and cursor.fetchone to retrieve data from database.
+
+The connect() will return a MySQLConnection object for us to use. There are parameters for this, user, password, host and database. We need to fit in each with correct information for it to be able to connect to the database. NOTE: do NOT commit this to any version control tools. 
+(https://dev.mysql.com/doc/connector-python/en/connector-python-example-connecting.html)
+
+The .cursor will give us a cursor object to work with. Which all SQL statements will be handled by cursor.
+cursor.execute() method, this method takes in three parameters, operation , params(default none) and multi(default false) to which params takes in a tuple for values will be bound to those values (only placeholder for those values) inside the operation to prevent SQL injection (connection will treated data as data with escaped special SQL characters). If multi is set to true it will return an iterator. Note for single element tuples, it needs to have a ‘,’ with it in Python. When multi is true, a single execute method could handle multiple operations (statements), But params did not work well with multiple operations, the best way is to execute each statement on its own.
+(https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) (https://realpython.com/prevent-python-sql-injection/)
+
+cursor.fetchall() or fetchmany(size) or fetechone() to retrieve data from the database. fetchall() will return all remaining rows, fetechmany(size) will retrieve size amount of rows, if there is no row, return empty, or there are less rows than size, all those rows will be retrieved, but no more than those rows will be retrieved.
+(https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html)
+
+commit(), this method will send a commit statement to the MySQL server to commit on current transaction to save all newly stored data. Since the Python connector does not autocommit.
+(https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlconnection-commit.html)
+
+Licences: (https://dev.mysql.com/doc/dev/connector-python/8.0/license.html)
+Copyright (c) 2016, 2020, Oracle and/or its affiliates. All rights reserved.
+ 
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License, version 2.0, as published by the Free Software Foundation.
+ 
+This program is also distributed with certain software (including but not limited to OpenSSL) that is licensed under separate terms, as designated in a particular file or component or in included license documentation. The authors of MySQL hereby grant you an additional permission to link the program and your derivative works with the separately licensed software that they have included with MySQL.
+ 
+Without limiting anything contained in the foregoing, this file, which is part of MySQL Connector/Python, is also subject to the Universal FOSS Exception, version 1.0, a copy of which can be found at http://oss.oracle.com/licenses/universal-foss-exception.
+ 
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License, version 2.0, for more details.
+You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA
